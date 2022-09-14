@@ -5,6 +5,9 @@ pipeline {
         booleanParam(name:'executeTests', defaultValue:true, description:'decision to  run tc')
         choice(name:'APPVERSION', choices:['1.1','1.2','1.3'])
     }
+    environment{
+        NEW_VERSION = '2.3'
+    }
     stages {
         stage('Hello') {
             steps {
@@ -34,9 +37,14 @@ pipeline {
         }
         }
         stage('PACKAGE') {
+            when{
+                expression{
+                    BRANCH_NAM == 'dev'
+                }
+            }
             steps {
                 script{
-                echo 'PACKAGE THE CODE'
+                echo "PACKAGE THE CODE ${NEW_VERSION}"
                 echo "Deploying the app version: ${params.APPVERSION}"
             }
         }

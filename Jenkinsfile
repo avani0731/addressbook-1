@@ -8,6 +8,7 @@ pipeline {
     expression{
         NEW_VERSION = '2.3'
         CHANGE_ID = '43234'
+        JOB_NAME = 'NEWJOB'
     }
     stages {
         stage('Hello') {

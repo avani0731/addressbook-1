@@ -8,7 +8,7 @@ pipeline {
     expression{
         NEW_VERSION = '2.3'
         CHANGE_ID = '43234'
-        JOB_NAME = 'NEWJOB'
+        JOB_NAME = "NEWJOB"
     }
     stages {
         stage('Hello') {
@@ -41,7 +41,7 @@ pipeline {
         stage('PACKAGE') {
             when{
                 expression{
-                    BRANCH_NAM == 'dev'
+                    BRANCH_NAME == 'dev'
                 }
             }
             steps {

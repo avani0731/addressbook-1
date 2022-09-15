@@ -5,14 +5,6 @@ pipeline {
         maven 'mymaven'
     }
     stages {
-        stage('Hello') {
-            agent label 'linux_slave'
-            steps {
-                script{
-                echo 'Hello World Vani'
-            }
-        }
-        }
         stage('COMPILE') {
             agent {label 'linux_slave'}
             steps {

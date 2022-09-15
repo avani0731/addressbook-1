@@ -1,8 +1,8 @@
 pipeline {
     agent any
     tools{
-        java "myjava"
-        maven "mymaven"
+        jdk 'myjava'
+        maven 'mymaven'
     }
     stages {
         stage('Hello') {

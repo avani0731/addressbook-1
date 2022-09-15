@@ -40,7 +40,7 @@ pipeline {
         stage('PACKAGE') {
             when{
                 expression{
-                    BRANCH_NAME == 'dev'
+                    BRANCH_NAME == "dev"
                 }
             }
             steps {

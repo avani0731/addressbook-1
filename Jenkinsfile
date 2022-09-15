@@ -38,6 +38,11 @@ pipeline {
         }
         }
         stage('PACKAGE') {
+            when{
+                expression{
+                    BRANCH_NAME == "dev"
+                }
+            }
             steps {
                 script{
                 echo "PACKAGE THE CODE ${NEW_VERSION}"

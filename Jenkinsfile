@@ -8,7 +8,6 @@ pipeline {
     environment{
         NEW_VERSION = '2.3'
         CHANGE_ID = '43234'
-        JOB_NAME = 'NEWJOB'
     }
     stages {
         stage('Hello') {
@@ -39,9 +38,17 @@ pipeline {
         }
         }
         stage('PACKAGE') {
+            input{
+                message "Select the version for package"
+                ok "Version Selected"
+                parameters{
+                    choice(name:'NEWAPP', choices:['3.1.1','3.1.2','3.1.3'])
+                }
+            }
             steps {
                 script{
                 echo "PACKAGE THE CODE ${NEW_VERSION}"
+                echo "PACKAGE THE CODE ${NEWAPP}"
                 echo "Deploying the app version: ${params.APPVERSION}"
             }
         }

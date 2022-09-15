@@ -38,14 +38,17 @@ pipeline {
         }
         }
         stage('PACKAGE') {
-            when{
-                expression{
-                    BRANCH_NAME == "dev"
+            input{
+                message "Select the version for package"
+                ok "Version Selected"
+                parameters{
+                    choice(name:'NEWAPP', choices:['3.1.1','3.1.2','3.1.3'])
                 }
             }
             steps {
                 script{
                 echo "PACKAGE THE CODE ${NEW_VERSION}"
+                echo "PACKAGE THE CODE ${NEWAPP}"
                 echo "Deploying the app version: ${params.APPVERSION}"
             }
         }

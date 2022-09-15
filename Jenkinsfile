@@ -1,11 +1,12 @@
 pipeline {
-    agent any
+    agent none
     tools{
         jdk 'myjava'
         maven 'mymaven'
     }
     stages {
         stage('Hello') {
+            agent label 'linux_slave'
             steps {
                 script{
                 echo 'Hello World Vani'
@@ -13,6 +14,7 @@ pipeline {
         }
         }
         stage('COMPILE') {
+            agent {label 'linux_slave'}
             steps {
                 script{
                 echo 'COMPILE THE CODE'
@@ -21,6 +23,7 @@ pipeline {
         }
         }
         stage('UNITEST') {
+            agent any
             steps {
                 script{
                 echo 'RUN THE UNIT TC'
@@ -34,6 +37,7 @@ pipeline {
         }
         }
         stage('PACKAGE') {
+            agent any
             steps {
                 script{
                 echo "PACKAGE THE CODE"
